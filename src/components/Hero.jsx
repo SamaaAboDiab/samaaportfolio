@@ -121,6 +121,11 @@ const Hero = () => {
           className="relative flex-col items-center justify-center hidden md:flex md:order-2 animate-fade-in-up"
           style={{ animationDelay: "150ms" }}
         >
+          {/* Desktop-only greeting — sits above the cartoon illustration on md+ screens */}
+          <p className="hidden mb-4 text-3xl font-extrabold leading-tight text-center font-head md:block md:text-4xl lg:text-5xl">
+            Hi I'm Samaa AboDiab
+          </p>
+
           <img
             src={heroArt}
             alt="Illustration of a laptop with code"
@@ -131,8 +136,16 @@ const Hero = () => {
 
         {/* Left: text */}
         <div className="text-center md:order-1 md:text-left animate-fade-in-up">
+          {/* Mobile/small-screen greeting — smaller text, stays above the avatar.
+              Hidden on md+ since the desktop version shows above the illustration instead. */}
+          <p className="mb-3 text-xl font-extrabold leading-tight font-head sm:mb-4 sm:text-xl md:hidden">
+            Hi I'm
+            <br />
+            Samaa AboDiab
+          </p>
+
           {/* Avatar badge */}
-          <div className="flex items-center justify-center w-72 h-72 mx-auto mb-4 text-xl font-bold border-4 rounded-full sm:w-36 sm:h-36 sm:mb-5 md:mx-0 bg-accent font-head border-ink-2 shadow-[0_0_50px_14px_rgba(108,99,255,0.4)]">
+          <div className="flex items-center justify-center w-40 h-40 mx-auto mb-4 text-xl font-bold border-4 rounded-full sm:w-44 sm:h-44 sm:mb-5 md:mx-0 bg-accent font-head border-ink-2 shadow-[0_0_50px_14px_rgba(108,99,255,0.4)]">
             <img
               src={heroArt2}
               alt="Avatar"
@@ -160,7 +173,7 @@ const Hero = () => {
             <span className="text-white">Developer</span>
           </h1>
 
-          <p className="max-w-xl mx-auto mb-5 text-lg leading-relaxed sm:mb-6 sm:text-base md:text-lg text-muted md:mx-0">
+          <p className="max-w-xl mx-auto mb-5 text-base leading-relaxed sm:mb-6 sm:text-lg md:text-lg text-muted md:mx-0">
             Frontend development deals with the parts of a website that the end
             user actually sees and interacts with. I build websites that are
             beautiful, functional, responsive, and accessible.
@@ -184,18 +197,18 @@ const Hero = () => {
 
           {/* Action buttons — stacked & full-width on small screens for easier tapping,
               side-by-side (auto width) from sm breakpoint up */}
-          <div className="flex flex-col items-stretch w-full max-w-xs gap-3 mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 md:justify-start md:mx-0">
+          <div className="flex flex-col items-stretch w-full max-w-[220px] gap-3 mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 md:justify-start md:mx-0">
             <a
               href="https://drive.google.com/file/d/1nJlnW4vBPSnvJZlOcyKNIugupJJx0hoC/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full px-4 py-3 text-sm font-semibold text-center text-white transition-all duration-300 border-2 rounded-lg sm:w-auto sm:px-7 sm:text-base border-white/20 hover:border-accent hover:text-accent hover:bg-accent/5"
+              className="w-full px-3 py-2.5 text-sm font-semibold text-center text-white transition-all duration-300 border-2 rounded-lg sm:w-auto sm:px-5 sm:text-base border-white/20 hover:border-accent hover:text-accent hover:bg-accent/5"
             >
               Download My CV
             </a>
             <a
               href="#projects"
-              className="w-full px-4 py-3 text-sm font-semibold text-center text-white transition-all duration-300 rounded-lg shadow-lg sm:w-auto sm:px-7 sm:text-base bg-accent hover:brightness-110 shadow-accent/30"
+              className="w-full px-3 py-2.5 text-sm font-semibold text-center text-white transition-all duration-300 rounded-lg shadow-lg sm:w-auto sm:px-5 sm:text-base bg-accent hover:brightness-110 shadow-accent/30"
             >
               View My Projects
             </a>
