@@ -278,5 +278,5 @@ body {
 }
 
 .loading-bar-fill {
-    animation: loading-fill 3s ease-in-out forwards;
+    animation: loading-fill 2s ease-in-out forwards;
 }

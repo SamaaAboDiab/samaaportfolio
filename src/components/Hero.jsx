@@ -182,18 +182,20 @@ const Hero = () => {
             ))}
           </div>
 
-          <div className="flex flex-row flex-wrap justify-center w-full gap-3 mx-auto sm:gap-4 md:justify-start md:mx-0">
+          {/* Action buttons — stacked & full-width on small screens for easier tapping,
+              side-by-side (auto width) from sm breakpoint up */}
+          <div className="flex flex-col items-stretch w-full max-w-xs gap-3 mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 md:justify-start md:mx-0">
             <a
               href="https://drive.google.com/file/d/1nJlnW4vBPSnvJZlOcyKNIugupJJx0hoC/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-3 text-sm font-semibold text-center text-white transition-all duration-300 border-2 rounded-lg sm:flex-none sm:px-7 sm:text-base border-white/20 hover:border-accent hover:text-accent hover:bg-accent/5"
+              className="w-full px-4 py-3 text-sm font-semibold text-center text-white transition-all duration-300 border-2 rounded-lg sm:w-auto sm:px-7 sm:text-base border-white/20 hover:border-accent hover:text-accent hover:bg-accent/5"
             >
               Download My CV
             </a>
             <a
               href="#projects"
-              className="flex-1 px-4 py-3 text-sm font-semibold text-center text-white transition-all duration-300 rounded-lg shadow-lg sm:flex-none sm:px-7 sm:text-base bg-accent hover:brightness-110 shadow-accent/30"
+              className="w-full px-4 py-3 text-sm font-semibold text-center text-white transition-all duration-300 rounded-lg shadow-lg sm:w-auto sm:px-7 sm:text-base bg-accent hover:brightness-110 shadow-accent/30"
             >
               View My Projects
             </a>

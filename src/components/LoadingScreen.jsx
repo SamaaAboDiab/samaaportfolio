@@ -6,7 +6,7 @@ const NAME = "Samaa Abo Diab";
 // hard-cutting, so the restart is invisible to the viewer.
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
-const VIDEO_FADE_DURATION = 0.5; // seconds, at both the start and end of each loop
+const VIDEO_FADE_DURATION = 0.2; // seconds, at both the start and end of each loop
 
 const LoadingScreen = ({ onFinish }) => {
   const [typed, setTyped] = useState("");
@@ -70,13 +70,13 @@ const LoadingScreen = ({ onFinish }) => {
     }, 80);
 
     // After 5s, start fading out
-    const fadeTimer = setTimeout(() => setFadeOut(true), 5000);
+    const fadeTimer = setTimeout(() => setFadeOut(true), 1000);
 
     // Remove from DOM after the fade transition finishes, then tell the app
     const hideTimer = setTimeout(() => {
       setHidden(true);
       if (onFinish) onFinish();
-    }, 5500);
+    }, 1500);
 
     return () => {
       clearInterval(typeInterval);
