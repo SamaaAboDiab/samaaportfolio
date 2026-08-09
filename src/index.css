@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   SAMAA ABO DIAB — merged portfolio theme
+   ============================================================ */
+
+:root {
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ---------- Theme colors (dark = default) ---------- */
+    /* Format: "R G B" so Tailwind can apply opacity via rgb(var(--x) / <alpha-value>) */
+    --color-ink: 0 0 0;
+    /* #000000 — pure black page background */
+    --color-ink-2: 17 20 32;
+    /* #111420 — card / surface background */
+    --color-ink-3: 23 27 40;
+    /* #171b28 — deeper surface / hover state */
+    --color-accent: 108 99 255;
+    /* #6c63ff */
+    --color-coral: 255 107 107;
+    /* #ff6b6b */
+    --color-muted: 255 255 255;
+    /* #a8adc2 — secondary text, lightened for better contrast on pure black bg */
+    --color-white: 255 255 255;
+    /* primary foreground (text/borders) on dark bg */
+}
+
+/* ---------- Light theme overrides ---------- */
+/* Applied when <html> has class="light" (toggled by ThemeToggle.jsx) */
+html.light {
+    --color-ink: 255 255 255;
+    /* #ffffff — pure white page background */
+    --color-ink-2: 245 246 250;
+    /* #f5f6fa — light gray card background */
+    --color-ink-3: 236 238 243;
+    /* #eceef3 — hover / deeper surface */
+    --color-accent: 91 79 224;
+    /* #5b4fe0 — darkened for contrast on light bg */
+    --color-coral: 214 58 58;
+    /* #d63a3a — darkened for contrast on light bg */
+    --color-muted: 17 20 32;
+    /* #373b49 — darker secondary text for stronger contrast on white */
+    --color-white: 8 9 13;
+    /* #08090d — near-black for maximum clarity on light bg */
+}
+
+html {
+    /* Smooth color transition when toggling themes */
+    transition: background-color 0.3s var(--ease);
+}
+
+html,
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: rgb(var(--color-ink));
+    transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(var(--color-ink));
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-accent));
+    border-radius: 3px;
+}
+
+/* ---------- Custom cursor (fine pointer / desktop only) ---------- */
+#cursor,
+#cursorFollower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+#cursor {
+    width: 8px;
+    height: 8px;
+    background: rgb(var(--color-accent));
+    transition: transform 150ms var(--ease), opacity 150ms var(--ease);
+}
+
+#cursorFollower {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid rgb(var(--color-accent));
+    opacity: 0.5;
+    transition: transform 300ms var(--ease);
+}
+
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(2.5) !important;
+    opacity: 0.5 !important;
+}
+
+.cursor-follower-hover {
+    transform: translate(-50%, -50%) scale(1.6) !important;
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+
+.reveal-left {
+    transform: translateX(-48px);
+}
+
+.reveal-right {
+    transform: translateX(48px);
+}
+
+.reveal-zoom {
+    transform: scale(0.88);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/* ---------- Typing cursor blink ---------- */
+.cursor-blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ---------- Skill progress bars ---------- */
+.skill-bar-track {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6c63ff, #00d4aa);
+    transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Misc animation utilities ---------- */
+.animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 6s ease infinite;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out both;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease-out both;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-float {
+    animation: float 4.5s ease-in-out infinite;
+}
+
+.hero-shadow {
+    animation: shadow-pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes shadow-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(0.7);
+        opacity: 0.15;
+    }
+}
+
+@keyframes gradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (pointer: coarse) {
+
+    #cursor,
+    #cursorFollower {
+        display: none;
+    }
+}
+
+.loading-bar-fill {
+    animation: loading-fill 3s ease-in-out forwards;
+}
